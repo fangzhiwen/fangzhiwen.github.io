@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+.vscode/
+yarn.lock
+.idea
+*.ipr
+*.iws
+*.iml
+.DS_Store
+db.json
+public/
