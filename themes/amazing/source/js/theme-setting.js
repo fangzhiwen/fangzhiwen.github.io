@@ -16,7 +16,7 @@ function isNightFun() {
     return isNightTemp;
 }
 
-var isNight = isNightFun();
+var isNight=isNightFun();
 // 参考自 https://www.imaegoo.com/
 var nightNav;
 var nightIcon;
@@ -57,10 +57,10 @@ function switchNight() {
     } else {
         isNight = 'false';
     }
-
+    
     applyNight(isNight);
     localStorage.setExpire('night', isNight, expireTime1H);
-    if (typeof loadUtterances == 'function') {
+    if(typeof loadUtterances == 'function'){
         loadUtterances();
     }
 }

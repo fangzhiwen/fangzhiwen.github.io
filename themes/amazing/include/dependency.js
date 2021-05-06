@@ -2,7 +2,7 @@
 const semver = require('semver');
 const logger = require('hexo-log')();
 const packageInfo = require('../package.json');
-const {yellow, red, green} = require('./util/console');
+const { yellow, red, green } = require('./util/console');
 
 module.exports = hexo => {
     function checkDependency(name, reqVer) {

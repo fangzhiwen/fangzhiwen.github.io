@@ -1,6 +1,5 @@
 // reference https://dp2px.com/2019/08/13/hexo-carousel/
-var Carousel = function () {
-};
+var Carousel = function () { };
 Carousel.prototype = {
     container: "",
     datas: null,
@@ -44,7 +43,7 @@ Carousel.prototype = {
         for (var i = 0; i < imgLength; i++) {
             $(".transverse-box").append("<div class='img-item'><a href='" + options.datas[i].url + "' target='_blank'><img src='" + options.datas[i].img + "' url='" + options.datas[i].url + "' alt='" + options.datas[i].alt + "'></a></div>");
         }
-        ;$(".vertical-box ul").append("<li><a href='" + options.datas[1].url + "' target='_blank'><img src='" + options.datas[1].img + "' alt='" + options.datas[1].alt + "'></a></li>");
+        ; $(".vertical-box ul").append("<li><a href='" + options.datas[1].url + "' target='_blank'><img src='" + options.datas[1].img + "' alt='" + options.datas[1].alt + "'></a></li>");
         $(".vertical-box ul").append("<li><a href='" + options.datas[2].url + "' target='_blank'><img src='" + options.datas[2].img + "' alt='" + options.datas[2].alt + "'></a></li>");
         $(".transverse-box").find(".img-item").eq(0).siblings().fadeOut(800);
         $(".transverse-box").find(".img-item").eq(0).fadeIn(800);
@@ -127,7 +126,6 @@ Carousel.prototype = {
     }
 };
 var banner;
-
 function loadBanner() {
     if ($('#banner').length > 0) {
         if (banner == undefined || banner == null) {
@@ -148,5 +146,4 @@ function loadBanner() {
         }
     }
 }
-
 $(document).ready(loadBanner());

@@ -1,10 +1,10 @@
-const {Component} = require('inferno');
+const { Component } = require('inferno');
 const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
 const ArticleMedia = require('hexo-component-inferno/lib/view/common/article_media');
 
 class RecentPosts extends Component {
     render() {
-        const {title, posts} = this.props;
+        const { title, posts } = this.props;
 
         return <div class="card widget">
             <div class="card-content">
@@ -16,7 +16,7 @@ class RecentPosts extends Component {
                         title={post.title}
                         date={post.date}
                         dateXml={post.dateXml}
-                        categories={post.categories}/>;
+                        categories={post.categories} />;
                 })}
             </div>
         </div>;
@@ -24,8 +24,8 @@ class RecentPosts extends Component {
 }
 
 module.exports = RecentPosts.Cacheable = cacheComponent(RecentPosts, 'widget.recentposts', props => {
-    const {site, helper} = props;
-    const {url_for, __, date_xml, date} = helper;
+    const { site, helper } = props;
+    const { url_for, __, date_xml, date } = helper;
     if (!site.posts.length) {
         return null;
     }

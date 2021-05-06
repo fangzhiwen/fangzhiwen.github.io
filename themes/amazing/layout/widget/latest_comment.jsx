@@ -1,9 +1,9 @@
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class LatestComment extends Component {
     render() {
-        const {isReturn, title, tip} = this.props;
+        const { isReturn, title, tip } = this.props;
 
         if (!isReturn) {
             return null
@@ -18,9 +18,9 @@ class LatestComment extends Component {
 }
 
 module.exports = cacheComponent(LatestComment, 'widget.latestcomment', props => {
-    const {config, helper} = props;
-    const {__} = helper;
-    const {comment} = config;
+    const { config, helper } = props;
+    const { __ } = helper;
+    const { comment } = config;
 
     if (comment == undefined || comment.type == undefined || (comment.type != 'gitalk' && comment.type != 'valine')
         || !comment.has_latest_comment) {

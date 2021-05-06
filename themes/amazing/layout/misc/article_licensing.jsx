@@ -150,7 +150,7 @@ ArticleLicensing.Cacheable = cacheComponent(ArticleLicensing, 'misc.articlelicen
         title: page.title,
         link: link,
         author: page.author || config.author,
-        author_url: page.author_url || config.url,
+        author_url:page.author_url || config.url,
         authorTitle: helper.__('article.licensing.author'),
         createdAt: page.date ? helper.date(page.date) : null,
         createdTitle: helper.__('article.licensing.created_at'),

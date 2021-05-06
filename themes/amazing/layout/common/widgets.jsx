@@ -1,5 +1,5 @@
 const logger = require('hexo-log')();
-const {Component} = require('inferno');
+const { Component } = require('inferno');
 const view = require('hexo-component-inferno/lib/core/view');
 const classname = require('hexo-component-inferno/lib/util/classname');
 
@@ -19,22 +19,23 @@ function formatWidgets(widgets) {
     return result;
 }
 
-function clone(Obj) {
+function clone(Obj){
     var buf;
-    if (Obj instanceof Array) {
-        buf = [];
-        var i = Obj.length;
-        while (i--) {
-            buf[i] = clone(Obj[i]);
+    if(Obj instanceof Array){
+        buf=[];
+        var i=Obj.length;
+        while(i--){
+            buf[i]=clone(Obj[i]);
         }
         return buf;
-    } else if (Obj instanceof Object) {
-        buf = {};
-        for (var k in Obj) {
-            buf[k] = clone(Obj[k]);
+    }
+    else if(Obj instanceof Object){
+        buf={};
+        for(var k in Obj){
+            buf[k]=clone(Obj[k]);
         }
         return buf;
-    } else {
+    }else{
         return Obj;
     }
 }
@@ -45,7 +46,7 @@ function formatAllWidgets(widgets) {
         widgets.filter(widget => typeof widget === 'object').forEach(widget => {
             if ('position' in widget && (widget.position === 'left' || widget.position === 'right')) {
                 var widgetNew = clone(widget);
-                if (widgetNew.position === 'right') {
+                if(widgetNew.position === 'right'){
                     widgetNew.position = 'left';
                 }
                 if (!(widgetNew.position in result)) {
@@ -99,7 +100,7 @@ function isColumnSticky(config, position) {
 
 class Widgets extends Component {
     render() {
-        const {site, config, helper, page, position} = this.props;
+        const { site, config, helper, page, position } = this.props;
         const widgets = (page.layout == 'post' || page.layout == 'page') ? formatAllWidgets(config.widgets)[position] || [] : formatWidgets(config.widgets)[position] || [];
         const columnCount = getColumnCount(config.widgets);
 
@@ -123,7 +124,7 @@ class Widgets extends Component {
                 try {
                     let Widget = view.require('widget/' + widget.type);
                     Widget = Widget.Cacheable ? Widget.Cacheable : Widget;
-                    return <Widget site={site} helper={helper} config={config} page={page} widget={widget}/>;
+                    return <Widget site={site} helper={helper} config={config} page={page} widget={widget} />;
                 } catch (e) {
                     logger.w(`Icarus cannot load widget "${widget.type}"`);
                 }

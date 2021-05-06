@@ -1,6 +1,5 @@
-const {Component, Fragment} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
-
+const { Component, Fragment } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 class Valine extends Component {
     render() {
         const {
@@ -48,13 +47,13 @@ class Valine extends Component {
         });`;
         return <Fragment>
             <div id="comment-container" class="content"></div>
-            <script dangerouslySetInnerHTML={{__html: js}}></script>
+            <script dangerouslySetInnerHTML={{ __html: js }}></script>
         </Fragment>;
     }
 }
 
 module.exports = Valine.Cacheable = cacheComponent(Valine, 'comment.valine', props => {
-    const {comment, page} = props;
+    const { comment, page } = props;
 
     return {
         appId: comment.app_id,

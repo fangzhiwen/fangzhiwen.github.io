@@ -1,7 +1,8 @@
 // author by removef
 // https://removeif.github.io/
 $(function () { //获取处理友链数据
-    $.getJSON("../json_data/friend.json", function (data) {
+    //https://github.com/fangzhiwen/blog_db/issues/2#issuecomment-832448170
+    $.getJSON("https://api.github.com/repos/fangzhiwen/blog_db/issues/2/issuecomment?per_page=100&client_id=2669d8560263bb73b361&client_secret=affa9cc4d905d42ead17838b25c759096188d8de", function (data) {
 
         // var data0 = data[0];
         $('.links-content').html("");
@@ -20,7 +21,7 @@ $(function () { //获取处理友链数据
                 html += "    <img class=\"ava\" src=\"" + e.src + "\">";
             }
             html +=
-                "<div class='text-desc' title=\"" + e.desc + "\">    网址：<a href=\"" + e.url + "\" target=\"_blank\">" + e.name + "</a>" +
+                "<div class='text-desc' title=\""+e.desc+"\">    网址：<a href=\"" + e.url + "\" target=\"_blank\">" + e.name + "</a>" +
                 "    <br>时间：" + e.date +
                 "<br>简介：" + e.desc + "</div>" +
                 "    </div>";
@@ -35,7 +36,7 @@ $(function () { //获取处理友链数据
                 var html = "<div class=\"friend-card-item\">";
                 html += "    <img class=\"ava\" src=\"/img/links/nopic.jpg\" title=\"图片链接不可用，使用的默认图片\">";
                 html +=
-                    "<div class='text-desc' title=\"" + e.desc + "\">    网址：<a href=\"" + e.url + "\" target=\"_blank\">" + e.name + "</a>" +
+                    "<div class='text-desc' title=\""+e.desc+"\">    网址：<a href=\"" + e.url + "\" target=\"_blank\">" + e.name + "</a>" +
                     "    <br>访问时间：" + e.stopTime +
                     "<br>简介：" + e.desc + "</div>" +
                     "    </div>";

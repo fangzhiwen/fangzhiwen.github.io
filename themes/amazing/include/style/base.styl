@@ -66,38 +66,38 @@ $colors = merge($colors, $custom-colors)
 @import bulma-stylus-root + '/layout/_all'
 
 html
-  height: 100%
-  -webkit-text-size-adjust: 100%
-  -moz-text-size-adjust: 100%
-  -ms-text-size-adjust: 100%
-  text-size-adjust: 100%
+    height: 100%
+    -webkit-text-size-adjust: 100%
+    -moz-text-size-adjust: 100%
+    -ms-text-size-adjust: 100%
+    text-size-adjust: 100%
 
 body
-  min-height: 100%
-  display: flex
-  flex-direction: column
+    min-height: 100%
+    display: flex
+    flex-direction: column
 
 body > .section
-  flex-grow: 1
+    flex-grow: 1
 
 +desktop()
-  ::-webkit-scrollbar
-    width: 8px
-    height: 8px
+    ::-webkit-scrollbar
+        width: 8px
+        height: 8px
 
-  ::-webkit-scrollbar-track
-    border-radius: 3px
-    background: rgba(0, 0, 0, 0.06)
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
+    ::-webkit-scrollbar-track
+        border-radius: 3px
+        background: rgba(0,0,0,0.06)
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.1)
 
-  ::-webkit-scrollbar-thumb
-    border-radius: 3px
-    background: rgba(0, 0, 0, 0.12)
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2)
+    ::-webkit-scrollbar-thumb
+        border-radius: 3px
+        background: rgba(0,0,0,0.12)
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.2)
 
-  ::-webkit-scrollbar-thumb:hover
-    background: rgba(0, 0, 0, 0.24)
+    ::-webkit-scrollbar-thumb:hover
+        background: rgba(0,0,0,0.24)
 
 .article-licensing .licensing-meta h6, .article-licensing .licensing-title a, .size-small {
-  font-size: .85rem !important;
+    font-size: .85rem!important;
 }

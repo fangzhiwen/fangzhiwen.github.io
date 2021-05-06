@@ -2,9 +2,8 @@
  * Utterances comment JSX component.
  * @module view/comment/utterances
  */
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
-
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 /**
  * Utterances comment JSX component.
  *
@@ -19,7 +18,7 @@ const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
  */
 class Utteranc extends Component {
     render() {
-        const {repo, issueTerm, issueNumber, label, theme} = this.props;
+        const { repo, issueTerm, issueNumber, label, theme } = this.props;
         const js = `
         // reference https://tristan.partin.io/blog/2020/4/11/introduction/
         function loadUtterances() {
@@ -57,7 +56,7 @@ class Utteranc extends Component {
                 Please set it in <code>_config.yml</code>.
             </div>;
         }
-        const config = {repo};
+        const config = { repo };
         if (issueTerm) {
             config['issue-term'] = issueTerm;
         } else {
@@ -69,9 +68,7 @@ class Utteranc extends Component {
         if (theme) {
             config.theme = theme;
         }
-        return <div id="comment-container">
-            <script dangerouslySetInnerHTML={{__html: js}} async={true}></script>
-        </div>;
+        return <div id="comment-container"><script dangerouslySetInnerHTML={{ __html: js }} async={true}></script></div>;
     }
 }
 
@@ -93,7 +90,7 @@ class Utteranc extends Component {
  *     }} />
  */
 module.exports = Utteranc.Cacheable = cacheComponent(Utteranc, 'comment.utteranc', props => {
-    const {repo, issue_term, issue_number, label, theme} = props.comment;
+    const { repo, issue_term, issue_number, label, theme } = props.comment;
 
     return {
         repo,

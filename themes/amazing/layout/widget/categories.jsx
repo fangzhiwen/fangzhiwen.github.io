@@ -1,25 +1,22 @@
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const AdsenseX = require('./ads_x');
 
 class Categories extends Component {
 
 
-    renderList(categories, showCount, count, isPage) {
-        return categories.map(category => {
-            return (count.n++ < 10 || isPage) ? <li>
-                <a class="level is-mobile is-marginless" href={category.url}>
+    renderList(categories, showCount,count,isPage) {
+        return categories.map(category => {return (count.n++ < 10 || isPage) ?<li>
+            <a class="level is-mobile is-marginless" href={category.url}>
                 <span class="level-start">
                     <span class="level-item">{category.name}</span>
                 </span>
-                    {showCount ? <span class="level-end">
+                {showCount ? <span class="level-end">
                     <span class="level-item tag">{category.count}</span>
                 </span> : null}
-                </a>
-                {category.children.length ?
-                    <ul class="mr-0">{this.renderList(category.children, showCount, count, isPage)}</ul> : null}
-            </li> : null
-        });
+            </a>
+            {category.children.length ? <ul class="mr-0">{this.renderList(category.children, showCount,count,isPage)}</ul> : null}
+        </li>:null});
     }
 
     render() {
@@ -30,16 +27,16 @@ class Categories extends Component {
             isPage,
             allUrl
         } = this.props;
-        var count = {n: 0};
+        var count={n: 0};
 
         return <Fragment>
-            {isPage ? <AdsenseX/> : null}
+            {isPage ? <AdsenseX /> : null}
             <div class="card widget">
                 <div class="card-content">
                     <div class="menu">
                         <h3 class="menu-label">{title}</h3>
                         <ul class="menu-list">
-                            {this.renderList(categories, showCount, count, isPage)}
+                            {this.renderList(categories, showCount,count,isPage)}
                             {count.n >= 10 && !isPage ?
                                 <a className="level is-mobile is-marginless" href={allUrl}>
                                     <span className="level-start">
@@ -50,8 +47,8 @@ class Categories extends Component {
                         </ul>
                     </div>
                 </div>
-            </div>
-            {isPage ? <AdsenseX/> : null}
+        </div>
+        {isPage ? <AdsenseX /> : null}
         </Fragment>
     }
 }
@@ -68,7 +65,7 @@ module.exports = Categories.Cacheable = cacheComponent(Categories, 'widget.categ
         show_count = true,
         isPage
     } = props;
-    const {url_for, _p} = helper;
+    const { url_for, _p } = helper;
 
     if (!categories || !categories.length) {
         return null;
@@ -77,8 +74,7 @@ module.exports = Categories.Cacheable = cacheComponent(Categories, 'widget.categ
     let depth = 0;
     try {
         depth = parseInt(props.depth, 10);
-    } catch (e) {
-    }
+    } catch (e) { }
 
     function prepareQuery(parent) {
         const query = {};
@@ -86,7 +82,7 @@ module.exports = Categories.Cacheable = cacheComponent(Categories, 'widget.categ
         if (parent) {
             query.parent = parent;
         } else {
-            query.parent = {$exists: false};
+            query.parent = { $exists: false };
         }
 
         return categories.find(query).sort(orderBy, order).filter(cat => cat.length);

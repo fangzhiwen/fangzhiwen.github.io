@@ -178,9 +178,7 @@ function renderCommentData(COMMENT_ARR) {
             var item = COMMENT_ARR[i];
             var contentStr = item.content;
             htmlContentWidget +=
-                "<div class='card-comment-item'>" +
-                "<a href=\"" + item.userUrl + "\"target=\"_blank\">" +
-                "<img class='ava' src='" + item.userAvatar + "'  onerror='this.onerror = null;this.src=\"https://cdn.jsdelivr.net/npm/gitalk@1/src/assets/icon/github.svg\";' /></a>" +
+                "<div class='card-comment-item'>" + "<a href=\"" + item.userUrl + "\"target=\"_blank\">" + "<img class='ava' src='" + item.userAvatar + "'/></a>" +
                 "<div class='item-header-text'><a href='" + item.userUrl + "' target='_blank'>" + item.userName + "</a>&nbsp;发表于" + getDateDiff(new Date(item.date).getTime()) + "</div>" + "<div class=\"item-text\"><a href =\"" + item.url + '#comment-container\">' + contentStr + "</a></div>" +
                 "</div>";
         }
@@ -262,85 +260,84 @@ function renderValineComment(valine, ADMIN_NAME) {
 function loadIssueData(appId, appKey, userName, userRepo, isValine) {
 
     setTimeout(function () { // 延迟1s执行，保证其余的先加载
-            var COMMENT_ARR = {};
-            var COMMENT_CACHE = localStorage.getItem(COMMENT_CACHE_KEY);
-            var COMMENT = {};
-            var authorizationToken;
+        var COMMENT_ARR = {};
+        var COMMENT_CACHE = localStorage.getItem(COMMENT_CACHE_KEY);
+        var COMMENT = {};
+        var authorizationToken;
 
-            if (COMMENT_CACHE != '' || COMMENT_CACHE != null) {
-                // 异常不影响结果，继续往下执行
-                try {
-                    COMMENT = JSON.parse(COMMENT_CACHE);
-                    COMMENT_ARR = COMMENT["data"];
-                } catch (e) {
-                    COMMENT_CACHE = '';
-                }
+        if (COMMENT_CACHE != '' || COMMENT_CACHE != null) {
+            // 异常不影响结果，继续往下执行
+            try {
+                COMMENT = JSON.parse(COMMENT_CACHE);
+                COMMENT_ARR = COMMENT["data"];
+            } catch (e) {
+                COMMENT_CACHE = '';
             }
-
-            if (isValine) {
-                if (typeof Valine == "function") {
-                    ADMIN_NAME = userName;
-                    if (valine == undefined || valine == null) {
-                        valine = new Valine({
-                            el: '#comment-container-no',
-                            notify: false,
-                            verify: false,
-                            appId: appId,
-                            appKey: appKey,
-                            placeholder: '留下您的高见！',
-                            avatar: 'mp',
-                            avatarForce: false,
-                            meta: ["nick", "mail", "link"],
-                            pageSize: 10,
-                            visitor: false,
-                            highlight: true,
-                            recordIP: false
-                        });
-                    }
-                }
-            } else {
-                repoIssuesUrl = repoIssuesUrl.replace("userName", userName).replace("userRepo", userRepo);
-                ADMIN_NAME = userName;
-                clientId = appId;
-                clientSecret = appKey;
-                authorizationToken = 'Basic ' + btoa(clientId + ':' + clientSecret);
-            }
-
-            if (COMMENT_CACHE == '' || COMMENT_CACHE == null || new Date().getTime() - COMMENT["date"] > 60 * 1000) { // request per 10 minutes
-                if (isValine) {
-                    renderValineComment(valine, ADMIN_NAME);
-                } else {
-                    loadCommentDataAndRender(authorizationToken);
-                }
-            } else {
-                console.log("load cache data...");
-                // 渲染评论数据
-                renderCommentData(COMMENT_ARR);
-            }
-
-            // 首页热门推荐
-            loadIndexHotData(authorizationToken);
-
-            // 装载评论数到文章对应位置
-            var gitalkIdsArr = document.getElementsByClassName('display-none-class');
-            if (gitalkIdsArr != undefined && gitalkIdsArr.length > 0) {
-                for (i = 0; i < gitalkIdsArr.length; i++) {
-                    var id = gitalkIdsArr[i].innerText;
-                    if (isValine) {
-                        writeHtmlValineCommentCountValueById(id, valine);
-                    } else {
-                        writeHtmlCommentCountValueById(id, repoIssuesUrl, authorizationToken);
-                    }
-                }
-            }
-            // console.clear();
-            console.log("~~~~欢迎光临！记得有时间多来看看哦，https://removeif.github.io/ ~~~~")
         }
+
+        if (isValine) {
+            if (typeof Valine == "function") {
+                ADMIN_NAME = userName;
+                if (valine == undefined || valine == null) {
+                    valine = new Valine({
+                        el: '#comment-container-no',
+                        notify: false,
+                        verify: false,
+                        appId: appId,
+                        appKey: appKey,
+                        placeholder: '留下您的高见！',
+                        avatar: 'mp',
+                        avatarForce: false,
+                        meta: ["nick", "mail", "link"],
+                        pageSize: 10,
+                        visitor: false,
+                        highlight: true,
+                        recordIP: false
+                    });
+                }
+            }
+        } else {
+            repoIssuesUrl = repoIssuesUrl.replace("userName", userName).replace("userRepo", userRepo);
+            ADMIN_NAME = userName;
+            clientId = appId;
+            clientSecret = appKey;
+            authorizationToken = 'Basic ' + btoa(clientId + ':' + clientSecret);
+        }
+
+        if (COMMENT_CACHE == '' || COMMENT_CACHE == null || new Date().getTime() - COMMENT["date"] > 60 * 1000) { // request per 10 minutes
+            if (isValine) {
+                renderValineComment(valine, ADMIN_NAME);
+            } else {
+                loadCommentDataAndRender(authorizationToken);
+            }
+        } else {
+            console.log("load cache data...");
+            // 渲染评论数据
+            renderCommentData(COMMENT_ARR);
+        }
+
+        // 首页热门推荐
+        loadIndexHotData(authorizationToken);
+
+        // 装载评论数到文章对应位置
+        var gitalkIdsArr = document.getElementsByClassName('display-none-class');
+        if (gitalkIdsArr != undefined && gitalkIdsArr.length > 0) {
+            for (i = 0; i < gitalkIdsArr.length; i++) {
+                var id = gitalkIdsArr[i].innerText;
+                if (isValine) {
+                    writeHtmlValineCommentCountValueById(id, valine);
+                } else {
+                    writeHtmlCommentCountValueById(id, repoIssuesUrl, authorizationToken);
+                }
+            }
+        }
+        // console.clear();
+        console.log("~~~~欢迎光临！记得有时间多来看看哦，https://removeif.github.io/ ~~~~")
+    }
         ,
         500
     )
 }
-
 // $(document).ready(loadIssueData());
 
 //load issue data completely execute

@@ -1,9 +1,9 @@
-const {Component, Fragment} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component, Fragment } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class BackToTop extends Component {
     render() {
-        const {title, jsUrl} = this.props;
+        const { title, jsUrl } = this.props;
 
         return <Fragment>
             <a id="back-to-top" title={title} href="javascript:;">
@@ -16,7 +16,7 @@ class BackToTop extends Component {
 }
 
 BackToTop.Cacheable = cacheComponent(BackToTop, 'plugin.backtotop', props => {
-    const {helper, head} = props;
+    const { helper, head } = props;
     if (head) {
         return null;
     }

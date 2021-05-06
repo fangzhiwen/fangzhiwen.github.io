@@ -1,5 +1,5 @@
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Footer extends Component {
     render() {
@@ -27,13 +27,13 @@ class Footer extends Component {
             if (logo.text) {
                 footerLogo = logo.text;
             } else {
-                footerLogo = <img src={logoUrl} alt={siteTitle} height="28"/>;
+                footerLogo = <img src={logoUrl} alt={siteTitle} height="28" />;
             }
         } else {
             footerLogo = siteTitle;
         }
 
-        var footerWebsiteTimeTemp = footerWebsiteTime + "";
+        var footerWebsiteTimeTemp =  footerWebsiteTime+"";
         var timeArr = footerWebsiteTimeTemp.split("|");
         var timeJs = `function createTime(time) {
             var n = new Date(time);
@@ -60,23 +60,18 @@ class Footer extends Component {
                             {footerLogo}
                         </a>
                         <p class="size-small">
-                            <span
-                                dangerouslySetInnerHTML={{__html: `&copy; ${siteYear} ${author || siteTitle}`}}></span>
+                            <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
                             &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                            href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> & <a
-                            href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a>&nbsp;
-                            <br/>
-                            {registeredNo ? <span>&copy; <a href="http://www.beian.miit.gov.cn/"
-                                                            target="_blank">{registeredNo}</a><br/></span> : null}
-                            {footerCopyrightDsec ?
-                                <span dangerouslySetInnerHTML={{__html: footerCopyrightDsec}}></span> : null}
+                                href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> & <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a>&nbsp;
+                            <br />
+                            {registeredNo ? <span>&copy; <a href="http://www.beian.miit.gov.cn/" target="_blank">{registeredNo}</a><br /></span> : null}
+                            {footerCopyrightDsec ? <span dangerouslySetInnerHTML={{ __html: footerCopyrightDsec }}></span> : null}
                             {websiteStartTime ? <span>
                                 <span id="statistic-times">loading...</span>
-                                <script dangerouslySetInnerHTML={{__html: timeJs}}></script>
-                                <br/>
+                                <script dangerouslySetInnerHTML={{ __html: timeJs }}></script>
+                                <br />
                             </span> : null}
-                            {showVisitorCounter ? <div class="size-small"><span
-                                dangerouslySetInnerHTML={{__html: visitorCounterTitle}}></span></div> : null}
+                            {showVisitorCounter ? <div class="size-small"><span dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span></div> : null}
                         </p>
                     </div>
                     <div class="level-end">
@@ -84,8 +79,7 @@ class Footer extends Component {
                             {Object.keys(links).map(name => {
                                 const link = links[name];
                                 return <p class="control">
-                                    <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} target="_blank"
-                                       rel="noopener" title={name} href={link.url}>
+                                    <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={link.url}>
                                         {link.icon ? <i class={link.icon}></i> : name}
                                     </a>
                                 </p>;
@@ -93,22 +87,21 @@ class Footer extends Component {
                         </div> : null}
                         {side_music_netease_id ?
                             <div class="sideMusic">
-                                <link rel="stylesheet"
-                                      href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"/>
+                                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" />
                                 <script src={my_cdn(url_for('/js/APlayer.min.js'))}></script>
                                 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
                                 <meting-js style="width: auto;height: 2000px;"
-                                           server="netease"
-                                           type="playlist"
-                                           id={side_music_netease_id}
-                                           theme="#2980b9"
-                                           loop="all"
-                                           autoplay="false"
-                                           order="list"
-                                           storageName="aplayer-setting"
-                                           lrctype="0"
-                                           list-max-height="400px"
-                                           fixed="true"
+                                    server="netease"
+                                    type="playlist"
+                                    id={side_music_netease_id}
+                                    theme="#2980b9"
+                                    loop="all"
+                                    autoplay="false"
+                                    order="list"
+                                    storageName="aplayer-setting"
+                                    lrctype="0"
+                                    list-max-height="400px"
+                                    fixed="true"
                                 >
                                 </meting-js>
                             </div> : null}
@@ -120,9 +113,9 @@ class Footer extends Component {
 }
 
 module.exports = cacheComponent(Footer, 'common.footer', props => {
-    const {config, helper} = props;
-    const {url_for, _p, date, my_cdn, __} = helper;
-    const {logo, title, author, footer, plugins, side_music_netease_id, website_start_time, footer_copyright_dsec, footer_registered_no, busuanzi_only_count, footer_website_time} = config;
+    const { config, helper } = props;
+    const { url_for, _p, date, my_cdn,__ } = helper;
+    const { logo, title, author, footer, plugins, side_music_netease_id, website_start_time, footer_copyright_dsec, footer_registered_no, busuanzi_only_count, footer_website_time } = config;
 
     const links = {};
     if (footer && footer.links) {

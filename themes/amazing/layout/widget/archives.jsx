@@ -1,5 +1,5 @@
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Archives extends Component {
     render() {
@@ -18,7 +18,7 @@ class Archives extends Component {
                     <ul class="menu-list">
                         {/*限制只返回5个月的，太多显示不好看*/}
                         {items.map(archive => {
-                            return count++ < 5 ? <li>
+                          return  count++ < 5 ? <li>
                                 <a class="level is-mobile is-marginless" href={archive.url}>
                                 <span class="level-start">
                                     <span class="level-item">{archive.name}</span>
@@ -55,7 +55,7 @@ module.exports = Archives.Cacheable = cacheComponent(Archives, 'widget.archives'
         show_count = true,
         format = null
     } = props;
-    const {url_for, _p} = helper;
+    const { url_for, _p } = helper;
     const posts = site.posts.sort('date', order);
     if (!posts.length) {
         return null;

@@ -1,5 +1,5 @@
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const AdsenseX = require('./ads_x');
 
 class Tags extends Component {
@@ -14,32 +14,30 @@ class Tags extends Component {
         var count = 0;
 
         return <Fragment>
-            {isPage ? <AdsenseX/> : null}
+            {isPage ? <AdsenseX /> : null}
             <div class="card widget">
-                <div class="card-content">
-                    <div class="menu">
-                        <h3 class="menu-label">{title}</h3>
-                        <div class="field is-grouped is-grouped-multiline">
-                            {tags.sort((a, b) => b.count - a.count).map(tag => {
-                                return (count++ < 20 || isPage) ? <div class="control">
-                                    <a class="tags has-addons" href={tag.url}>
-                                        <span class="tag">{tag.name}</span>
-                                        {showCount ? <span class="tag is-grey-lightest">{tag.count}</span> : null}
-                                    </a>
-                                </div> : null
-                            })}
-                        </div>
-                        {!isPage && count >= 20 ?
-                            <div className="field is-grouped is-grouped-multiline">
-                                <a className="tags has-addons" href={allUrl}>
-                                    <span className="tag">查看全部>></span>
-                                </a>
-                            </div> : null
-                        }
+            <div class="card-content">
+                <div class="menu">
+                    <h3 class="menu-label">{title}</h3>
+                    <div class="field is-grouped is-grouped-multiline">
+                        {tags.sort((a, b)=> b.count-a.count).map(tag => { return (count++ < 20 || isPage)?<div class="control">
+                            <a class="tags has-addons" href={tag.url}>
+                                <span class="tag">{tag.name}</span>
+                                {showCount ? <span class="tag is-grey-lightest">{tag.count}</span> : null}
+                            </a>
+                        </div>:null})}
                     </div>
+                    {!isPage && count >= 20 ?
+                        <div className="field is-grouped is-grouped-multiline">
+                            <a className="tags has-addons" href={allUrl}>
+                                <span className="tag">查看全部>></span>
+                            </a>
+                        </div> : null
+                    }
                 </div>
             </div>
-            {isPage ? <AdsenseX/> : null}
+        </div>
+        {isPage ? <AdsenseX /> : null}
         </Fragment>
     }
 }
@@ -55,7 +53,7 @@ module.exports = Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
         isPage
     } = props;
     let tags = props.tags || props.site.tags;
-    const {url_for, _p} = helper;
+    const { url_for, _p } = helper;
 
     if (!tags || !tags.length) {
         return null;

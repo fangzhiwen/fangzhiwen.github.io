@@ -1,10 +1,10 @@
-const {Component, Fragment} = require('inferno');
+const { Component, Fragment } = require('inferno');
 const Index = require('./index');
 
 module.exports = class extends Component {
     render() {
-        const {config, page, helper} = this.props;
-        const {url_for, _p} = helper;
+        const { config, page, helper } = this.props;
+        const { url_for, _p } = helper;
 
         return <Fragment>
             <div class="card">
@@ -17,7 +17,7 @@ module.exports = class extends Component {
                     </nav>
                 </div>
             </div>
-            <Index config={config} page={page} helper={helper}/>
+            <Index config={config} page={page} helper={helper} />
         </Fragment>;
     }
 };

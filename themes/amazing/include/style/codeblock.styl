@@ -4,102 +4,102 @@
 $codeblock-caption-bg ?= rgba(200, 200, 200, .15)
 
 figure.highlight
-  padding: 0
-  width: 100%
-  position: relative
-  margin: 1em 0 1em !important
-  border-radius: $radius
-
-  &.folded
-    .highlight-body
-      height: 0
-
-  .copy
-    opacity: .7
-
-  pre, table tr:hover
-    color: inherit
-    background: transparent
-
-  table
-    width: auto
-
-    tr td
-      border: none
-
-    tr:not(:first-child) td
-      padding-top: 0
-
-    tr:not(:last-child) td
-      padding-bottom: 0
-
-  pre
     padding: 0
-    overflow: visible
+    width: 100%
+    position: relative
+    margin: 1em 0 1em !important
+    border-radius: $radius
 
-    .line, code .hljs
-      line-height: 1.5rem
+    &.folded
+        .highlight-body
+            height: 0
+    
+    .copy
+        opacity: .7
 
-  figcaption, .gutter
-    background: $codeblock-caption-bg
+    pre, table tr:hover
+        color: inherit
+        background: transparent
 
-  figcaption
-    margin: 0 !important
-    padding: .3em 0em .3em .75em
-    font-style: normal
-    font-size: .8em
+    table
+        width: auto
 
-    *
-      color: inherit
+        tr td
+            border: none
 
-    span
-      font-weight: 500
-      font-family: $family-code
+        tr:not(:first-child) td
+            padding-top: 0
 
-    .level-left *:not(:last-child)
-      margin-right: .5em
+        tr:not(:last-child) td
+            padding-bottom: 0
 
-    .level-right *:not(:first-child)
-      margin-left: .5em
+    pre
+        padding: 0
+        overflow: visible
 
-    .fold
-      cursor: pointer
+        .line, code .hljs
+            line-height: 1.5rem
 
-    &.level
-      overflow: auto
+    figcaption, .gutter
+        background: $codeblock-caption-bg
 
-      .level-right
-        a
-          padding: 0em .75em
+    figcaption
+        margin: 0 !important
+        padding: .3em 0em .3em .75em
+        font-style: normal
+        font-size: .8em
 
-  .highlight-body
-    overflow: auto
+        *
+            color: inherit
 
-  .gutter
-    text-align: right
+        span
+            font-weight: 500
+            font-family: $family-code
 
-  .tag, .title, .number, .section
-    display: inherit
-    font: inherit
-    margin: inherit
-    padding: inherit
-    background: inherit
-    height: inherit
-    text-align: inherit
-    vertical-align: inherit
-    min-width: inherit
-    border-radius: inherit
+        .level-left *:not(:last-child)
+            margin-right: .5em
+
+        .level-right *:not(:first-child)
+            margin-left: .5em
+
+        .fold
+            cursor: pointer
+
+        &.level
+            overflow: auto
+
+            .level-right
+                a
+                    padding: 0em .75em
+
+    .highlight-body
+        overflow: auto
+
+    .gutter
+        text-align: right
+
+    .tag, .title, .number, .section
+        display: inherit
+        font: inherit
+        margin: inherit
+        padding: inherit
+        background: inherit
+        height: inherit
+        text-align: inherit
+        vertical-align: inherit
+        min-width: inherit
+        border-radius: inherit
 
 /* ---------------------------------
  *        Fix Gist Snippet
  * --------------------------------- */
 .gist
-  table
-    tr:hover
-      background: transparent
+    table
+        tr:hover
+            background: transparent
 
-    td
-      border: none
+        td
+            border: none
 
-  .file
-    all: initial
+    .file
+        all: initial

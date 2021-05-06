@@ -1,4 +1,4 @@
-const {Component} = require('inferno');
+const { Component } = require('inferno');
 const MetaTags = require('hexo-component-inferno/lib/view/misc/meta');
 const WebApp = require('hexo-component-inferno/lib/view/misc/web_app');
 const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
@@ -30,8 +30,8 @@ function getPageTitle(page, siteTitle, helper) {
 
 module.exports = class extends Component {
     render() {
-        const {site, config, helper, page} = this.props;
-        const {url_for, cdn, fontcdn, iconcdn, is_post, my_cdn} = helper;
+        const { site, config, helper, page } = this.props;
+        const { url_for, cdn, fontcdn, iconcdn, is_post, my_cdn } = helper;
         const {
             url,
             head = {},
@@ -113,9 +113,9 @@ module.exports = class extends Component {
         const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
 
         return <head>
-            <meta charset="utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-            {meta && meta.length ? <MetaTags meta={meta}/> : null}
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+            {meta && meta.length ? <MetaTags meta={meta} /> : null}
 
             <title>{getPageTitle(page, config.title, helper)}</title>
 
@@ -124,7 +124,7 @@ module.exports = class extends Component {
                 favicon={favicon}
                 icons={manifest.icons}
                 themeColor={manifest.theme_color}
-                name={manifest.name || config.title}/>
+                name={manifest.name || config.title} />
 
             {typeof open_graph === 'object' && open_graph !== null ? <OpenGraph
                 type={open_graph.type || (is_post(page) ? 'article' : 'website')}
@@ -143,7 +143,7 @@ module.exports = class extends Component {
                 twitterSite={open_graph.twitter_site}
                 googlePlus={open_graph.google_plus}
                 facebookAdmins={open_graph.fb_admins}
-                facebookAppId={open_graph.fb_app_id}/> : null}
+                facebookAppId={open_graph.fb_app_id} /> : null}
 
             {typeof structured_data === 'object' && structured_data !== null ? <StructuredData
                 title={structured_data.title || config.title}
@@ -152,35 +152,30 @@ module.exports = class extends Component {
                 author={structured_data.author || config.author}
                 date={page.date}
                 updated={page.updated}
-                images={structuredImages}/> : null}
+                images={structuredImages} /> : null}
 
-            {canonical_url ? <link rel="canonical" href={canonical_url}/> : null}
-            {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml"/> : null}
-            {favicon ? <link rel="icon" href={url_for(favicon)}/> : null}
+            {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
+            {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
+            {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             {/*fix chrome busuanzi issue*/}
-            <meta name="referrer" content="no-referrer-when-downgrade"/>
-            <link rel="stylesheet" href={iconcdn()}/>
-            {hlTheme ?
-                <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')}/> : null}
-            <link rel="stylesheet" href={fontCssUrl[variant]}/>
-            <link rel="stylesheet" href={url_for('/css/' + variant + '.css')}/>
+            <meta name="referrer" content="no-referrer-when-downgrade" />
+            <link rel="stylesheet" href={iconcdn()} />
+            {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
+            <link rel="stylesheet" href={fontCssUrl[variant]} />
+            <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
             {/*icon*/}
             <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"/>
-            <link rel="stylesheet"
-                  href={fontcdn('Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css')}/>
-            {globalGray ? <link rel="stylesheet" href={url_for('/css/global_gray.css')}/> : null}
+            <link rel="stylesheet" href={fontcdn('Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css')} />
+            {globalGray ? <link rel="stylesheet" href={url_for('/css/global_gray.css')} /> : null}
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
-            <Plugins site={site} config={config} helper={helper} page={page} head={true}/>
+            <Plugins site={site} config={config} helper={helper} page={page} head={true} />
 
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
-                                       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-                                       async></script> : null}
-            {hasLive2D ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))}/> : null}
-            {hasLive2D ? <script type="text/javascript" async={true}
-                                 src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
-            {isValineComment ? <script async="" referrerpolicy="no-referrer"
-                                       src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null}
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
+            {hasLive2D ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
+            {hasLive2D ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
+            {isValineComment ? <script async="" referrerpolicy="no-referrer" src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null}
             {isValineComment ? <script src="//unpkg.com/valine/dist/Valine.min.js"></script> : null}
             {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null}
 

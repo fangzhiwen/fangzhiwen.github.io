@@ -61,11 +61,11 @@ var lastVideoIndex;
 $.getJSON("../json_data/video.json", function (data) {
     $('#video-list').append("");
     for (var i = 0; i < data.length; i++) {
-        var $li = $("<blockquote>" + (i + 1) + "." + data[i].desc + "</blockquote>");
+        var $li = $("<blockquote>"+(i+1)+"." + data[i].desc + "</blockquote>");
         $li.attr('id', i);
         $li.click(function (event) {
             var id = Number(this.id);
-            playVideo(data[id], id);
+            playVideo(data[id],id);
             $('#video-list #' + lastVideoIndex).css('color', '#888888');
             lastVideoIndex = id;
         });
@@ -74,7 +74,7 @@ $.getJSON("../json_data/video.json", function (data) {
 
 });
 
-function playVideo(data, id) {
+function playVideo(data,id) {
     new DPlayer({
         container: document.getElementById('dplayer'),
         autoplay: true,
