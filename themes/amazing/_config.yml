@@ -19,7 +19,7 @@ head:
         type: blog
         # Page URL (og:url) (optional)
         # You should leave this blank for most of the time
-        url: https://removeif.github.io/
+        url: https://fangzhiwen.github.io/
         # Page cover (og:image) (optional)
         # You should leave this blank for most of the time
         image: /img/avatar.png
