@@ -13,7 +13,7 @@ head:
     open_graph:
         # Page title (og:title) (optional)
         # You should leave this blank for most of the time
-        title: 土豆の瓜 d
+        title: 土豆の瓜
         # Page type (og:type) (optional)
         # You should leave this blank for most of the time
         type: blog
