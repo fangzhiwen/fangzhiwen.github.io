@@ -62,4 +62,6 @@ exclude: null
 ignore: null
 theme: amazing
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/fangzhiwen/fangzhiwen.github.io.git
+  branch: master
