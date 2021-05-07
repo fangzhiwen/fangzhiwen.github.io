@@ -158,8 +158,8 @@ search:
 comment:
     type: gitalk
     language: zh-CN #zh-CN #Localization language key, en, zh-CN and zh-TW are currently available.
-    owner: fangzhiwen         # (required) GitHub user name
-    repo: blog_db          # (required) GitHub repository name
+    owner: 'fangzhiwen'         # (required) GitHub user name
+    repo: 'blog_db'          # (required) GitHub repository name
     client_id: 0ab356d23cf208ee7460     # (required) OAuth application client id
     client_secret: 03529064ebdc87320feb16fd45b639c62ad149c4 # (required) OAuth application client secret
     admin: ['fangzhiwen']
@@ -168,7 +168,7 @@ comment:
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
     #proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
-    proxy: https://cors-anywhere.azm.works.dev/https://github.com/login/oauth/access_token
+    #proxy: https://cors-anywhere.azm.works.dev/https://github.com/login/oauth/access_token
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
@@ -343,7 +343,7 @@ plugins:
         tracking_id: 
     # BuSuanZi site/page view counter
     # https://busuanzi.ibruce.info
-    busuanzi: true
+    busuanzi: false
     # CNZZ statistics
     # https://www.umeng.com/web
     cnzz:
