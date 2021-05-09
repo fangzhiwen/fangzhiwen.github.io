@@ -9,7 +9,7 @@ function isNightFun() {
         if (isNightRange("19:00", "23:59") || isNightRange("00:00", "07:00")) {
             isNightTemp = 'true';
         } else {
-            isNightTemp = 'false';
+            isNightTemp = 'true'; //修改为深夜模式 by potato 2021.5.8
         }
         localStorage.setExpire("night", isNightTemp, expireTime1H);
     }

@@ -1,15 +1,22 @@
-// author by removef
-// https://removeif.github.io/
 $(function () { //获取处理友链数据
     //https://github.com/fangzhiwen/blog_db/issues/2#issuecomment-832448170
-    $.getJSON("https://api.github.com/repos/fangzhiwen/blog_db/issues/2/issuecomment?per_page=100&client_id=2669d8560263bb73b361&client_secret=affa9cc4d905d42ead17838b25c759096188d8de", function (data) {
+    $.getJSON("https://api.github.com/repos/fangzhiwen/fangzhiwen.github.io/issues/3/comments?per_page=100&client_id=0ab356d23cf208ee7460&client_secret=03529064ebdc87320feb16fd45b639c62ad149c4", function (source) {
 
+        var data = [];
+        var source1;
+        source1 = source;
+        // 以后每次更新的都在后面，此处倒序，按时间降序排
+        source1.reverse();
+        // 把所有的数据放到data的列表中
+        $.each(source1, function (i, e) {
+            data.push(JSON.parse(e.body));
+        });
         // var data0 = data[0];
         $('.links-content').html("");
 
         // 随机排序过滤失效的
-        let notValid = data.filter((item, a, b) => item.valid == 0);
-        data = data.filter((item, a, b) => item.valid != 0).sort(function (a, b) {
+        let notValid = data[0].filter((item, a, b) => item.valid == 0);
+        data = data[0].filter((item, a, b) => item.valid != 0).sort(function (a, b) {
             return Math.random() > .5 ? -1 : 1;
         });
         $('.links-content').append("<div class='friend-title-item'><br>大佬们<br><br><hr></div>");
